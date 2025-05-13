@@ -1,0 +1,25 @@
+{% extends 'root/base.html' %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'root/css/main.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+{#            {% include 'root/menu-card.html' with img_src='root/img/creator.png' page="#" header="О создателе" paragraph="Посмотреть резюме создателя" %}#}
+            {% url 'resume:create' as resume_create_url %}
+            {% include 'root/menu-card.html' with img_src='root/img/portfolio.png' url=resume_create_url header="Создать свое резюме" paragraph="Напиши немного о себе, чтобы делиться своим резюме как ссылкой" %}
+
+            {% url 'resume:all' as resume_all_url %}
+            {% include 'root/menu-card.html' with img_src='root/img/portfolio.png' url=resume_all_url header="Посмотреть все резюме" paragraph="Можете посмотреть все резюме на этом сайте" %}
+
+            {% if user.is_authenticated %}
+                {% url 'resume:get_by_username' user.username as my_resumes_url %}
+                {% include 'root/menu-card.html' with img_src='root/img/portfolio.png' url=my_resumes_url header="Мои резюме" paragraph="Посмотреть свои резюме" %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

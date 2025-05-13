@@ -1,0 +1,65 @@
+{% extends "root/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Классное резюме
+{% endblock %}
+
+{% block csrf %}
+	<meta name="csrf-token" content="{{ csrf_token }}">
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'resume/css/resume.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div id="resume" class="d-flex flex-column gap-3">
+        <section id="introduce" class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="editable">{{ user.username }}</h2>
+            </div>
+{#            <div class="col-md-6 text-center">#}
+{#                <img src="{% static 'resume/img/my.jpg' %}" alt="Аватарка" class="img-fluid rounded" style="max-width: 200px;">#}
+{#            </div>#}
+        </section>
+
+        <section id="about">
+            <h2>О себе</h2>
+            <p class="editable">Немного и много про себя</p>
+        </section>
+
+        <section id="profession">
+            <h2>Профессия</h2>
+            <p class="editable">На кого учился или кем хочешь работать?</p>
+        </section>
+
+        <section id="education">
+            <h2>Образование</h2>
+            <p class="editable">Где учился там и учился</p>
+        </section>
+
+        <section id="skills">
+            <h2>Навыки</h2>
+            <p class="editable">Что умеешь?</p>
+        </section>
+
+        <section id="portfolio">
+            <h2>Портфолио</h2>
+            <p class="editable">Проекты, решения и все все все</p>
+        </section>
+
+        <div id="popup-error" class="alert alert-danger position-fixed top-0 start-50 translate-middle-x mt-3 d-none" style="z-index: 1050;"></div>
+
+        <div id="popup-info" class="alert alert-info position-fixed top-0 start-50 translate-middle-x mt-3 d-none" style="z-index: 1050;"></div>
+
+        <div class="d-flex justify-content-center">
+            <button id="createResume" class="btn btn-success" style="width: 200px;">Создать</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'resume/js/create.js' %}"></script>
+{% endblock %}

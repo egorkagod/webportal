@@ -1,0 +1,22 @@
+{% extends "root/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Наши профессионалы
+{% endblock %}
+
+{% block csrf %}
+	<meta name="csrf-token" content="{{ csrf_token }}">
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+{% block main %}
+	{% for resume in resumes %}
+        {% include 'resume/resume-mini.html' with resume=resume %}
+    {% empty %}
+        <h2>Кажется резюме нет!</h2>
+    {% endfor %}
+{% endblock %}

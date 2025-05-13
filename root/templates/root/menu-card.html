@@ -1,0 +1,10 @@
+{% load static %}
+
+<div class="card py-1 col-12 col-md-6">
+    <img src="{% static img_src %}" class="card-img-top" alt="card-photo">
+    <div class="card-body">
+        <a href="{{ url }}" class="text-decoration-none text-dark"><h5 class="card-title hover-bigger">{{ header }}</h5></a>
+        <p class="card-text">{{ paragraph }}</p>
+        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+    </div>
+</div>

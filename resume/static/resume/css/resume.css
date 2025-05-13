@@ -1,0 +1,23 @@
+.big-text {
+    width: 100%;     /* или, например, 600px */
+    height: 5em;   /* можно и em: height: 10em; */
+    resize: vertical; /* пользователь может растягивать только по вертикали */
+    padding: 0.5em;
+    font-size: 1em;
+}
+
+#resume > section {
+    padding: 1% 3%;
+}
+
+#resume > section > p {
+    font-size: 1.3em;
+}
+
+.editable {
+    cursor: pointer;
+}
+
+.editable:hover {
+    background-color: #f0f0f0;
+}

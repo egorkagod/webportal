@@ -1,0 +1,65 @@
+{% extends "root/base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Классное резюме
+{% endblock %}
+
+{% block csrf %}
+	<meta name="csrf-token" content="{{ csrf_token }}">
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'resume/css/resume.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div id="resume" class="d-flex flex-column gap-3">
+        <section id="introduce" class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="">{{ resume.author.user.username }}</h2>
+            </div>
+{#            <div class="col-md-6 text-center">#}
+{#                <img src="{% static 'resume/img/my.jpg' %}" alt="Аватарка" class="img-fluid rounded" style="max-width: 200px;">#}
+{#            </div>#}
+        </section>
+
+        <section id="about">
+            <h2>О себе</h2>
+            <p class="editable">{{ resume.about }}</p>
+        </section>
+
+        <section id="profession">
+            <h2>Профессия</h2>
+            <p class="editable">{{ resume.profession }}</p>
+        </section>
+
+        <section id="education">
+            <h2>Образование</h2>
+            <p class="editable">{{ resume.education }}</p>
+        </section>
+
+        <section id="skills">
+            <h2>Навыки</h2>
+            <p class="editable">{{ resume.skills }}</p>
+        </section>
+
+        <section id="portfolio">
+            <h2>Портфолио</h2>
+            <p class="editable">{{ resume.portfolio }}</p>
+        </section>
+
+        <div id="popup-error" class="alert alert-danger position-fixed top-0 start-50 translate-middle-x mt-3 d-none" style="z-index: 1050;"></div>
+
+        <div id="popup-info" class="alert alert-info position-fixed top-0 start-50 translate-middle-x mt-3 d-none" style="z-index: 1050;"></div>
+
+        <div class="d-flex justify-content-center">
+            <button id="updateResume" data-id="{{ resume.id }}" class="d-none btn btn-success" style="width: 200px;">Сохранить</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'resume/js/view.js' %}"></script>
+{% endblock %}
